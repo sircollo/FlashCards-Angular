@@ -4,11 +4,18 @@
 <div >
     <!-- {{language.name}} -->
 </div>
-<div class="card" style="width: 18rem;" *ngFor="let language of language">
-  <img class="card-img-top" src="/assets/cards.jpeg" alt="Card image cap">
+<div class="container">
+  <div class="row">
+<div class="card" style="width: 18rem;" *ngFor="let language of language; let i = index">
+   <img class="card-img-top" src="/assets/cards.jpeg" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{language.name}}</h5>
-    <p class="card-text">{{language.details}}</p>
-    <a href="#" class="btn btn-primary">Details</a>
+    <button class="btn btn-primary" (click)="toggleDetails(i)" >Details</button>
+    <p class="card-text" *ngIf='language.showDetails'>
+     
+    <app-language-details [language]="language"></app-language-details>
+    </p>
+    
   </div>
+ 
+</div>
 </div>
